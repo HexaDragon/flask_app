@@ -6,7 +6,10 @@ from wtforms.validators import DataRequired
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')
+    """class LoginForm is used to supply the login.html the appropriate data, it contains all the fields required for
+    viewing on the html"""
+
+    username = StringField('Username', validators=[DataRequired()])         # declaring the username field (String)
+    password = PasswordField('Password', validators=[DataRequired()])       # declaring the password field (Password)
+    remember_me = BooleanField('Remember Me')                               # declaring the remember me field (Bool)
+    submit = SubmitField('Sign In')                                         # declaring the submit button
