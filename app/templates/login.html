@@ -1,20 +1,28 @@
-{% extends "base.html" %}
+{% extends "base.html" %} <!-- extending the base html file which contains the navigation elements -->
 
+<!-- content starts -->
 {% block content %}
 <div>
     <h1>Sign In</h1>
     <form action="" method="post" novalidate>
-        {{form.hidden_tag()}}
+        {{form.hidden_tag()}}  <!-- this is required to validate the authenticity of the form with secret token -->
         <p>
-            {{form.username.label}} <br>
-            {{form.username(size=32)}}
+            {{form.username.label}} <br>        <!-- inserting the username label -->
+            {{form.username(size=32)}} <br>          <!-- inserting the username field -->
+            {% for error in form.username.errors %}             <!-- Getting errors from the username field -->
+            <span style="color:red;">[{{ error }}]</span>       <!-- displaying the error using span -->
+            {% endfor %}
         </p>
         <p>
-            {{form.password.label}}<br>
-            {{form.password(size=32)}}
+            {{form.password.label}} <br>         <!-- inserting the password label -->
+            {{form.password(size=32)}} <br>         <!-- inserting the password field -->
+            {% for error in form.password.errors %}             <!-- Getting errors from the password field -->
+            <span style="color:red;">[{{ error }}]</span>       <!-- displaying the error using span -->
+            {% endfor %}
         </p>
-        <p>{{form.remember_me()}} {{form.remember_me.label}}</p>
-        <p>{{form.submit()}}</p>
+        <p>{{form.remember_me()}} {{form.remember_me.label}}</p>        <!-- inserting the remember me field & label -->
+        <p>{{form.submit()}}</p>        <!-- inserting the submit button -->
     </form>
 </div>
 {% endblock %}
+<!-- content ends -->
